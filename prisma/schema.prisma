@@ -66,3 +66,22 @@ model Post {
   authorId  String
   author    User    @relation(fields: [authorId], references: [id])
 }
+
+model ContactInquiry {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  createdAt DateTime @default(now())
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  clientName String
+  rating     Int      @default(5)
+  comment    String
+  imageUrl   String?  // Optional photo of the client/look
+  isApproved Boolean  @default(false) // For moderation
+  createdAt  DateTime @default(now())
+}

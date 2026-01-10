@@ -37,3 +37,13 @@ export type PasswordResetToken = Prisma.PasswordResetTokenModel
  * 
  */
 export type Post = Prisma.PostModel
+/**
+ * Model ContactInquiry
+ * 
+ */
+export type ContactInquiry = Prisma.ContactInquiryModel
+/**
+ * Model Review
+ * 
+ */
+export type Review = Prisma.ReviewModel

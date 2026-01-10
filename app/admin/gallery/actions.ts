@@ -10,7 +10,15 @@ const schema = z.object({
   category: z.string().optional(),
 });
 
-export async function addGalleryImage(formData: FormData) {
+export type GalleryState = {
+  message?: string;
+  success?: boolean;
+};
+
+export async function addGalleryImage(
+  prevState: GalleryState,
+  formData: FormData
+): Promise<GalleryState> {
   const file = formData.get("file") as File;
   const title = formData.get("title") as string;
   const category = formData.get("category") as string;

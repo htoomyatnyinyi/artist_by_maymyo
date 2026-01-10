@@ -56,7 +56,8 @@ export const ModelName = {
   PasswordResetToken: 'PasswordResetToken',
   Post: 'Post',
   ContactInquiry: 'ContactInquiry',
-  Review: 'Review'
+  Review: 'Review',
+  GalleryImage: 'GalleryImage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -149,6 +150,17 @@ export const ReviewScalarFieldEnum = {
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const GalleryImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  title: 'title',
+  category: 'category',
+  createdAt: 'createdAt'
+} as const
+
+export type GalleryImageScalarFieldEnum = (typeof GalleryImageScalarFieldEnum)[keyof typeof GalleryImageScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -20,7 +20,8 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center">
           <div className="w-full md:w-1/2 relative h-[600px] md:h-[700px]">
             <Image
-              src="https://images.unsplash.com/photo-1487412947132-2d9bed996eb7?q=80&w=800"
+              src="https://images.unsplash.com/photo-1611826585949-b0ccabd2c1a4?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              //   src="https://images.unsplash.com/photo-1487412947132-2d9bed996eb7?q=80&w=800"
               alt="Maymyo Portrait"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-700"

@@ -47,3 +47,8 @@ export type ContactInquiry = Prisma.ContactInquiryModel
  * 
  */
 export type Review = Prisma.ReviewModel
+/**
+ * Model GalleryImage
+ * 
+ */
+export type GalleryImage = Prisma.GalleryImageModel

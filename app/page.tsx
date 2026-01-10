@@ -89,13 +89,13 @@ export default function Home() {
                 title: "Bridal",
                 desc: "Timeless, radiant makeup for your special day. Creating a look that lasts through tears and laughter.",
                 image:
-                  "https://images.unsplash.com/photo-1595168019747-0628e932ec79?q=80&w=800",
+                  "https://images.unsplash.com/photo-1457972729786-0411a3b2b626?q=80&w=800",
               },
               {
                 title: "Editorial",
                 desc: "Creative, high-impact looks for photography and fashion. Pushing the boundaries of beauty.",
                 image:
-                  "https://images.unsplash.com/photo-1487412947132-2d9bed996eb7?q=80&w=800",
+                  "https://images.unsplash.com/photo-1457972729786-0411a3b2b626?q=80&w=800",
               },
               {
                 title: "Occasion",

@@ -85,3 +85,11 @@ model Review {
   isApproved Boolean  @default(false) // For moderation
   createdAt  DateTime @default(now())
 }
+
+model GalleryImage {
+  id        String   @id @default(uuid())
+  url       String
+  title     String?
+  category  String?  // e.g., "Bridal", "Editorial"
+  createdAt DateTime @default(now())
+}

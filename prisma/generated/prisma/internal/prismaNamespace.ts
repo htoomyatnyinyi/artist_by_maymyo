@@ -389,7 +389,8 @@ export const ModelName = {
   PasswordResetToken: 'PasswordResetToken',
   Post: 'Post',
   ContactInquiry: 'ContactInquiry',
-  Review: 'Review'
+  Review: 'Review',
+  GalleryImage: 'GalleryImage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -405,7 +406,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "emailVerificationToken" | "passwordResetToken" | "post" | "contactInquiry" | "review"
+    modelProps: "user" | "emailVerificationToken" | "passwordResetToken" | "post" | "contactInquiry" | "review" | "galleryImage"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -853,6 +854,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    GalleryImage: {
+      payload: Prisma.$GalleryImagePayload<ExtArgs>
+      fields: Prisma.GalleryImageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GalleryImageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GalleryImageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload>
+        }
+        findFirst: {
+          args: Prisma.GalleryImageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GalleryImageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload>
+        }
+        findMany: {
+          args: Prisma.GalleryImageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload>[]
+        }
+        create: {
+          args: Prisma.GalleryImageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload>
+        }
+        createMany: {
+          args: Prisma.GalleryImageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GalleryImageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload>[]
+        }
+        delete: {
+          args: Prisma.GalleryImageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload>
+        }
+        update: {
+          args: Prisma.GalleryImageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload>
+        }
+        deleteMany: {
+          args: Prisma.GalleryImageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GalleryImageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GalleryImageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload>[]
+        }
+        upsert: {
+          args: Prisma.GalleryImageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GalleryImagePayload>
+        }
+        aggregate: {
+          args: Prisma.GalleryImageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGalleryImage>
+        }
+        groupBy: {
+          args: Prisma.GalleryImageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GalleryImageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GalleryImageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GalleryImageCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -966,6 +1041,17 @@ export const ReviewScalarFieldEnum = {
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const GalleryImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  title: 'title',
+  category: 'category',
+  createdAt: 'createdAt'
+} as const
+
+export type GalleryImageScalarFieldEnum = (typeof GalleryImageScalarFieldEnum)[keyof typeof GalleryImageScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1161,6 +1247,7 @@ export type GlobalOmitConfig = {
   post?: Prisma.PostOmit
   contactInquiry?: Prisma.ContactInquiryOmit
   review?: Prisma.ReviewOmit
+  galleryImage?: Prisma.GalleryImageOmit
 }
 
 /* Types for Logging */

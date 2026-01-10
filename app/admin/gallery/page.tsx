@@ -4,7 +4,7 @@ import { deleteGalleryImage } from "./actions";
 import GalleryForm from "./GalleryForm";
 
 export default async function AdminGalleryPage() {
-  const images = await prisma.galleryImage.findMany({
+  const images_ = await prisma.galleryImage.findMany({
     orderBy: { createdAt: "desc" },
   });
 
@@ -16,7 +16,7 @@ export default async function AdminGalleryPage() {
 
       {/* Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
-        {images.map((img) => (
+        {images_.map((img: any) => (
           <div
             key={img.id}
             className="relative group aspect-3/4 bg-gray-100 rounded overflow-hidden"

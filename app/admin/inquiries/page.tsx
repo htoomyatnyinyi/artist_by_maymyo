@@ -9,7 +9,7 @@ export default async function AdminInquiriesPage() {
     <div>
       <h1 className="text-3xl font-bold mb-8">Inquiries</h1>
       <div className="space-y-4">
-        {inquiries.map((inquiry) => (
+        {inquiries.map((inquiry: any) => (
           <div
             key={inquiry.id}
             className="bg-white p-6 rounded-lg shadow-sm border border-gray-200"

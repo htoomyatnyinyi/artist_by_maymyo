@@ -31,7 +31,7 @@ export default async function AdminReviewsPage() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {reviews.map((review) => (
+            {reviews.map((review: any) => (
               <tr key={review.id}>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   {review.clientName}

@@ -36,7 +36,7 @@ export default async function ReviewsPage() {
               No reviews yet. Be the first to share your experience!
             </p>
           ) : (
-            reviews.map((review) => (
+            reviews.map((review: any) => (
               <div
                 key={review.id}
                 className="bg-white p-8 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 flex flex-col justify-between"

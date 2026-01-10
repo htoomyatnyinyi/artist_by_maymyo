@@ -53,7 +53,7 @@ export default async function GalleryPage() {
 
       <section className="px-6 md:px-12 pb-24">
         <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-          {images.map((img) => (
+          {images.map((img: any) => (
             <div
               key={img.id}
               className="relative break-inside-avoid overflow-hidden group"

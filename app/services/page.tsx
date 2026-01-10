@@ -70,7 +70,7 @@ export default function ServicesPage() {
       {/* Services List */}
       <section className="px-6 md:px-12 pb-24">
         <div className="max-w-6xl mx-auto space-y-24">
-          {services.map((service, idx) => (
+          {services.map((service: any, idx: number) => (
             <div
               key={service.category}
               className={`flex flex-col ${
@@ -100,7 +100,7 @@ export default function ServicesPage() {
                 </div>
 
                 <div className="space-y-6">
-                  {service.items.map((item) => (
+                  {service.items.map((item: any) => (
                     <div
                       key={item.name}
                       className="flex justify-between items-baseline border-b border-gray-100 pb-4 group cursor-default"

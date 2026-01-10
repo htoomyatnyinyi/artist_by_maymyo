@@ -17,10 +17,10 @@ import type * as Prisma from "./prismaNamespace"
 
 const config: runtime.GetPrismaClientConfig = {
   "previewFeatures": [],
-  "clientVersion": "7.0.1",
-  "engineVersion": "f09f2815f091dbba658cdcd2264306d88bb5bda6",
+  "clientVersion": "7.2.0",
+  "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "postgresql",
-  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id    Int     @id @default(autoincrement())\n  email String  @unique\n  name  String?\n  posts Post[]\n}\n\nmodel Post {\n  id        Int     @id @default(autoincrement())\n  title     String\n  content   String?\n  published Boolean @default(false)\n  authorId  Int\n  author    User    @relation(fields: [authorId], references: [id])\n}\n\n// model Cart {\n//   id        String     @id\n//   createdAt DateTime   @default(now())\n//   updatedAt DateTime\n//   userId    String     @unique\n//   users     users      @relation(fields: [userId], references: [id])\n//   CartItem  CartItem[]\n// }\n\n// model CartItem {\n//   id        String   @id\n//   quantity  Int\n//   createdAt DateTime @default(now())\n//   updatedAt DateTime\n//   cartId    String\n//   productId String\n//   Cart      Cart     @relation(fields: [cartId], references: [id])\n//   Product   Product  @relation(fields: [productId], references: [id])\n\n//   @@index([cartId], map: \"CartItem_cartId_fkey\")\n//   @@index([productId], map: \"CartItem_productId_fkey\")\n// }\n\n// model EmailVerificationToken {\n//   id        String   @id\n//   token     String   @unique\n//   userId    String\n//   expiresAt DateTime\n//   createdAt DateTime @default(now())\n//   users     users    @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n//   @@index([userId], map: \"EmailVerificationToken_userId_fkey\")\n// }\n\n// model PasswordResetToken {\n//   id        String   @id\n//   token     String   @unique\n//   userId    String\n//   expiresAt DateTime\n//   createdAt DateTime @default(now())\n//   users     users    @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n//   @@index([userId], map: \"PasswordResetToken_userId_fkey\")\n// }\n\n// model Product {\n//   id          String        @id\n//   name        String\n//   description String?\n//   price       Decimal       @db.Decimal(10, 2)\n//   stock       Int\n//   imageUrl    String?\n//   createdAt   DateTime      @default(now())\n//   updatedAt   DateTime\n//   CartItem    CartItem[]\n//   order_items order_items[]\n// }\n\n// model order_items {\n//   id          String   @id\n//   productName String\n//   price       Decimal  @db.Decimal(10, 2)\n//   quantity    Int\n//   createdAt   DateTime @default(now())\n//   updatedAt   DateTime\n//   orderId     String\n//   productId   String?\n//   orders      orders   @relation(fields: [orderId], references: [id])\n//   Product     Product? @relation(fields: [productId], references: [id])\n\n//   @@index([orderId], map: \"order_items_orderId_fkey\")\n//   @@index([productId], map: \"order_items_productId_fkey\")\n// }\n\n// model orders {\n//   id              String        @id\n//   userId          String\n//   status          orders_status @default(PENDING)\n//   totalAmount     Decimal       @db.Decimal(10, 2)\n//   shippingAddress Json?\n//   createdAt       DateTime      @default(now())\n//   updatedAt       DateTime\n//   order_items     order_items[]\n//   users           users         @relation(fields: [userId], references: [id])\n\n//   @@index([userId], map: \"orders_userId_fkey\")\n// }\n\n// model processed_webhook_events {\n//   id        String   @id\n//   createdAt DateTime @default(now())\n// }\n\n// model users {\n//   id                     String                   @id\n//   username               String                   @unique\n//   email                  String                   @unique\n//   googleId               String?                  @unique\n//   password               String?\n//   role                   users_role               @default(USER)\n//   firstName              String?\n//   lastName               String?\n//   phoneNumber            String?\n//   birthdate              DateTime?\n//   bio                    String?\n//   avatarUrl              String?\n//   verified               Boolean                  @default(false)\n//   createdAt              DateTime                 @default(now())\n//   updatedAt              DateTime\n//   Cart                   Cart?\n//   EmailVerificationToken EmailVerificationToken[]\n//   PasswordResetToken     PasswordResetToken[]\n//   orders                 orders[]\n// }\n\n// enum orders_status {\n//   PENDING\n//   PAID\n//   SHIPPED\n//   DELIVERED\n//   CANCELLED\n// }\n\n// enum users_role {\n//   USER\n//   EDITOR\n//   ADMIN\n// }\n",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel User {\n  id        String  @id @default(uuid())\n  email     String  @unique\n  password  String?\n  username  String?\n  fullname  String\n  avatarUrl String?\n  bio       String?\n  verified  Boolean @default(false)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime\n\n  posts Post[]\n\n  emailVerificationTokens EmailVerificationToken[]\n  passwordResetTokens     PasswordResetToken[]\n}\n\nmodel EmailVerificationToken {\n  id     String @id\n  token  String @unique\n  userId String\n\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n\n  users User @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel PasswordResetToken {\n  id        String   @id\n  token     String   @unique\n  userId    String\n  expiresAt DateTime\n  createdAt DateTime @default(now())\n  users     User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n}\n\nmodel Post {\n  id        String  @id @default(uuid())\n  title     String\n  content   String?\n  published Boolean @default(false)\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime\n\n  // relationship\n  authorId String\n  author   User   @relation(fields: [authorId], references: [id])\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"posts\",\"kind\":\"object\",\"type\":\"Post\",\"relationName\":\"PostToUser\"}],\"dbName\":null},\"Post\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"published\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"authorId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"author\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PostToUser\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullname\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"avatarUrl\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"bio\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"verified\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"posts\",\"kind\":\"object\",\"type\":\"Post\",\"relationName\":\"PostToUser\"},{\"name\":\"emailVerificationTokens\",\"kind\":\"object\",\"type\":\"EmailVerificationToken\",\"relationName\":\"EmailVerificationTokenToUser\"},{\"name\":\"passwordResetTokens\",\"kind\":\"object\",\"type\":\"PasswordResetToken\",\"relationName\":\"PasswordResetTokenToUser\"}],\"dbName\":null},\"EmailVerificationToken\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"EmailVerificationTokenToUser\"}],\"dbName\":null},\"PasswordResetToken\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"token\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"expiresAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PasswordResetTokenToUser\"}],\"dbName\":null},\"Post\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"content\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"published\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"authorId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"author\",\"kind\":\"object\",\"type\":\"User\",\"relationName\":\"PostToUser\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -62,7 +62,7 @@ export interface PrismaClientConstructor {
    * const users = await prisma.user.findMany()
    * ```
    * 
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+   * Read more in our [docs](https://pris.ly/d/client).
    */
 
   new <
@@ -84,7 +84,7 @@ export interface PrismaClientConstructor {
  * const users = await prisma.user.findMany()
  * ```
  * 
- * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
+ * Read more in our [docs](https://pris.ly/d/client).
  */
 
 export interface PrismaClient<
@@ -113,7 +113,7 @@ export interface PrismaClient<
    * const result = await prisma.$executeRaw`UPDATE User SET cool = ${true} WHERE email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $executeRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -125,7 +125,7 @@ export interface PrismaClient<
    * const result = await prisma.$executeRawUnsafe('UPDATE User SET cool = $1 WHERE email = $2 ;', true, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $executeRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<number>;
 
@@ -136,7 +136,7 @@ export interface PrismaClient<
    * const result = await prisma.$queryRaw`SELECT * FROM User WHERE id = ${1} OR email = ${'user@email.com'};`
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $queryRaw<T = unknown>(query: TemplateStringsArray | Prisma.Sql, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -148,7 +148,7 @@ export interface PrismaClient<
    * const result = await prisma.$queryRawUnsafe('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'user@email.com')
    * ```
    *
-   * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client/raw-database-access).
+   * Read more in our [docs](https://pris.ly/d/raw-queries).
    */
   $queryRawUnsafe<T = unknown>(query: string, ...values: any[]): Prisma.PrismaPromise<T>;
 
@@ -183,6 +183,26 @@ export interface PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.emailVerificationToken`: Exposes CRUD operations for the **EmailVerificationToken** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EmailVerificationTokens
+    * const emailVerificationTokens = await prisma.emailVerificationToken.findMany()
+    * ```
+    */
+  get emailVerificationToken(): Prisma.EmailVerificationTokenDelegate<ExtArgs, { omit: OmitOpts }>;
+
+  /**
+   * `prisma.passwordResetToken`: Exposes CRUD operations for the **PasswordResetToken** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PasswordResetTokens
+    * const passwordResetTokens = await prisma.passwordResetToken.findMany()
+    * ```
+    */
+  get passwordResetToken(): Prisma.PasswordResetTokenDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
    * `prisma.post`: Exposes CRUD operations for the **Post** model.

@@ -27,7 +27,7 @@ export default function Home() {
           </h1>
           <div className="pt-8">
             <Link
-              href="/booking"
+              href="/contact"
               className="inline-block px-8 py-3 bg-white text-black text-xs font-bold tracking-widest uppercase hover:bg-black hover:text-white transition-all duration-300"
             >
               Book an Appointment

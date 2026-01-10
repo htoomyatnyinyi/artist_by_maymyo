@@ -154,7 +154,7 @@ export default function Home() {
             together.
           </p>
           <Link
-            href="/booking"
+            href="/contact"
             className="inline-block px-10 py-4 bg-white text-black text-sm font-bold tracking-widest uppercase hover:bg-gray-200 transition-colors"
           >
             Book Appointment

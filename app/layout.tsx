@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Montserrat } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant-garamond",
@@ -19,8 +20,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Makeup Artist By Maymyo",
-  description: "Makeup Artist By Maymyo",
+  title: "Maymyo Makeup Artistry | Luxury Bridal & Celebrity Stylist",
+  description:
+    "Enhance your natural beauty with Makeup Artist By Maymyo. Expert application for weddings, photo shoots, and special events using premium products.",
 };
 
 export default function RootLayout({
@@ -34,6 +36,7 @@ export default function RootLayout({
         className={`${cormorantGaramond.variable} ${montserrat.variable} antialiased bg-white text-gray-900`}
       >
         <Navbar />
+        <Analytics />
         <main className="min-h-screen">{children}</main>
         <Footer />
       </body>

@@ -44,7 +44,9 @@ export default async function GalleryPage() {
   return (
     <div className="pt-24 min-h-screen bg-white">
       <section className="py-16 text-center px-6">
-        <h1 className="text-4xl md:text-6xl font-serif mb-6">Portfolio</h1>
+        <h1 className="text-4xl md:text-6xl font-serif mb-6 text-gray-600">
+          Portfolio
+        </h1>
         <p className="max-w-xl mx-auto text-gray-500 font-light">
           A vivid collection of my latest work, featuring bridal elegance,
           editorial creativity, and everyday beauty.

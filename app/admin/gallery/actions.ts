@@ -6,8 +6,11 @@ import { z } from "zod";
 import cloudinary from "@/lib/cloudinary";
 
 const schema = z.object({
+  file: z.instanceof(File).refine((file) => file.size > 0, {
+    message: "File is required",
+  }),
   title: z.string().optional(),
-  category: z.string().optional(),
+  category: z.enum(["Bridal", "Editorial", "Occasional"]),
 });
 
 export type GalleryState = {
@@ -19,20 +22,22 @@ export async function addGalleryImage(
   prevState: GalleryState,
   formData: FormData
 ): Promise<GalleryState> {
-  const file = formData.get("file") as File;
-  const title = formData.get("title") as string;
-  const category = formData.get("category") as string;
-
-  if (!file || file.size === 0) {
-    return { success: false, message: "No file provided" };
-  }
-
-  const validation = schema.safeParse({ title, category });
-  if (!validation.success) {
-    return { success: false, message: "Invalid input" };
-  }
-
   try {
+    const file = formData.get("file");
+    const title = formData.get("title") as string;
+    const category = formData.get("category") as string;
+
+    if (!file || !(file instanceof File) || file.size === 0) {
+      console.log("File validation failed", { file });
+      return { success: false, message: "No file provided" };
+    }
+
+    const validation = schema.safeParse({ file, title, category });
+    if (!validation.success) {
+      console.log("Schema validation failed", validation.error);
+      return { success: false, message: "Invalid input" };
+    }
+
     // Convert file to buffer
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
@@ -44,8 +49,12 @@ export async function addGalleryImage(
           folder: "makeup-artist-portfolio",
         },
         (error, result) => {
-          if (error) reject(error);
-          else resolve(result);
+          if (error) {
+            console.error("Cloudinary upload error:", error);
+            reject(error);
+          } else {
+            resolve(result);
+          }
         }
       );
       uploadStream.end(buffer);
@@ -65,8 +74,8 @@ export async function addGalleryImage(
     revalidatePath("/admin/gallery");
     return { success: true };
   } catch (error) {
-    console.error("Upload failed:", error);
-    return { success: false, message: "Upload failed" };
+    console.error("Server Action failed:", error);
+    return { success: false, message: "An error occurred during upload." };
   }
 }
 

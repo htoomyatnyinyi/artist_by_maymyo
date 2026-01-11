@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 import nodemailer from "nodemailer";
+import { revalidatePath } from "next/cache";
 import prisma from "@/lib/prisma"; // Assuming you have a default prisma instance exported from lib/prisma
 
 // Schema validation
@@ -67,6 +68,9 @@ export async function sendContactForm(
     });
 
     // 2. Send Email via Nodemailer
+    // Revalidate admin pages to show new inquiry immediately
+    revalidatePath("/admin");
+    revalidatePath("/admin/inquiries");
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || "smtp.gmail.com",
       port: Number(process.env.SMTP_PORT) || 587,

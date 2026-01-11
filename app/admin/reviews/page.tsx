@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma";
 import { approveReview, deleteReview } from "./actions";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminReviewsPage() {
   const reviews = await prisma.review.findMany({
     orderBy: { createdAt: "desc" },

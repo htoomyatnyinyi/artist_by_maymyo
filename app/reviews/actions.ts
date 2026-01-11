@@ -53,6 +53,8 @@ export async function submitReview(
     });
 
     revalidatePath("/reviews");
+    revalidatePath("/admin");
+    revalidatePath("/admin/reviews");
 
     return {
       success: true,

@@ -51,7 +51,7 @@ export default async function ReviewsPage() {
                     ))}
                   </div>
 
-                  <p className="text-gray-600 italic font-light leading-relaxed">
+                  <p className="text-gray-600 italic font-light leading-relaxed wrap-break-word w-full">
                     &ldquo;{review.comment}&rdquo;
                   </p>
                 </div>

@@ -21,7 +21,9 @@ export default async function ReviewsPage() {
         <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
           Testimonials
         </p>
-        <h1 className="text-4xl md:text-6xl font-serif mb-6">Client Love</h1>
+        <h1 className="text-4xl md:text-6xl font-serif mb-6 text-gray-600">
+          Client Love
+        </h1>
         <p className="max-w-xl mx-auto text-gray-500 font-light leading-relaxed">
           Kind words from beautiful faces. It is an honor to be a part of your
           special moments.
@@ -54,7 +56,7 @@ export default async function ReviewsPage() {
                   </p>
                 </div>
 
-                <div className="flex items-center mt-6 gap-4">
+                <div className="flex items-center mt-6 gap-4 text-gray-600">
                   {review.imageUrl ? (
                     <Image
                       src={review.imageUrl}
@@ -86,7 +88,9 @@ export default async function ReviewsPage() {
       {/* Submission Form Section */}
       <section className="bg-white border-t border-gray-100 py-24 px-6 md:px-12">
         <div className="max-w-2xl mx-auto text-center space-y-8">
-          <h2 className="text-3xl font-serif">Share Your Experience</h2>
+          <h2 className="text-3xl font-serif text-gray-600">
+            Share Your Experience
+          </h2>
           <p className="text-gray-500 font-light">
             Have we worked together? I would love to hear your thoughts.
           </p>

@@ -39,13 +39,13 @@ export default function ReviewForm() {
   return (
     <form
       action={formAction}
-      className="text-left space-y-6 bg-[#f9f9f9] p-8 md:p-12 rounded-sm border border-gray-100"
+      className="text-left space-y-6 bg-[#f9f9f9] text-gray-500 p-8 md:p-12 rounded-sm border border-gray-100"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label
             htmlFor="clientName"
-            className="text-xs font-bold uppercase tracking-wider text-gray-800"
+            className="text-xs font-bold uppercase tracking-wider"
           >
             Your Name
           </label>
@@ -54,7 +54,7 @@ export default function ReviewForm() {
             id="clientName"
             name="clientName"
             className="w-full border-b border-gray-300 py-2 bg-transparent focus:outline-none focus:border-black transition-colors"
-            placeholder="Jane Doe"
+            placeholder="Enter your name"
           />
           {state.errors?.clientName && (
             <p className="text-red-500 text-xs mt-1">

@@ -9,7 +9,7 @@ export default function AboutPage() {
         <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
           The Artist
         </p>
-        <h1 className="text-4xl md:text-6xl font-serif mb-8">
+        <h1 className="text-4xl md:text-6xl font-serif mb-8 text-gray-600">
           Behind the Brush
         </h1>
         <div className="w-24 h-0.5 bg-black mx-auto"></div>
@@ -21,14 +21,13 @@ export default function AboutPage() {
           <div className="w-full md:w-1/2 relative h-[600px] md:h-[700px]">
             <Image
               src="https://images.unsplash.com/photo-1611826585949-b0ccabd2c1a4?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              //   src="https://images.unsplash.com/photo-1487412947132-2d9bed996eb7?q=80&w=800"
               alt="Maymyo Portrait"
               fill
               className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
           </div>
           <div className="w-full md:w-1/2 space-y-8">
-            <h2 className="text-3xl md:text-4xl font-serif leading-tight">
+            <h2 className="text-3xl md:text-4xl font-serif leading-tight text-gray-600">
               Hello, I'm Maymyo. <br />
               <span className="text-gray-500 italic text-2xl">
                 Dedicated to defining your beauty.
@@ -72,30 +71,34 @@ export default function AboutPage() {
       <section className="bg-[#f9f9f9] py-24 px-6 md:px-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           <div className="space-y-4 px-4">
-            <div className="h-12 w-12 mx-auto bg-gray-200 rounded-full flex items-center justify-center mb-6">
+            <div className="h-12 w-12 mx-auto bg-gray-900 rounded-full flex items-center justify-center mb-6">
               <span className="font-serif text-xl italic">01</span>
             </div>
-            <h3 className="text-xl font-serif">Detail Oriented</h3>
+            <h3 className="text-xl font-serif text-gray-600">
+              Detail Oriented
+            </h3>
             <p className="text-gray-500 font-light">
               Perfection is in the details. I meticulously prep the skin to
               ensure a flawless, long-lasting canvas.
             </p>
           </div>
           <div className="space-y-4 px-4">
-            <div className="h-12 w-12 mx-auto bg-gray-200 rounded-full flex items-center justify-center mb-6">
+            <div className="h-12 w-12 mx-auto bg-gray-900 rounded-full flex items-center justify-center mb-6">
               <span className="font-serif text-xl italic">02</span>
             </div>
-            <h3 className="text-xl font-serif">Premium Products</h3>
+            <h3 className="text-xl font-serif text-gray-600">
+              Premium Products
+            </h3>
             <p className="text-gray-500 font-light">
               My kit is stocked with luxury, high-performance brands like
               Charlotte Tilbury, NARS, and Dior.
             </p>
           </div>
           <div className="space-y-4 px-4">
-            <div className="h-12 w-12 mx-auto bg-gray-200 rounded-full flex items-center justify-center mb-6">
+            <div className="h-12 w-12 mx-auto bg-gray-900 rounded-full flex items-center justify-center mb-6">
               <span className="font-serif text-xl italic">03</span>
             </div>
-            <h3 className="text-xl font-serif">Client Centric</h3>
+            <h3 className="text-xl font-serif text-gray-600">Client Centric</h3>
             <p className="text-gray-500 font-light">
               Your comfort and satisfaction are paramount. I listen, I suggest,
               and together we create magic.
@@ -107,7 +110,7 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-24 text-center px-6">
         <div className="max-w-2xl mx-auto space-y-8">
-          <h2 className="text-3xl md:text-5xl font-serif">
+          <h2 className="text-3xl md:text-5xl font-serif text-gray-600">
             Experience the Artistry
           </h2>
           <Link

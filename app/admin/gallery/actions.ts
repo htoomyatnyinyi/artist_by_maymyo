@@ -42,6 +42,16 @@ export async function addGalleryImage(
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
+    // Check if it's an image at all
+    if (!file.type.startsWith("image/")) {
+      return { message: "File must be an image", success: false };
+    }
+
+    // Optional: Limit file size (e.g., 10MB)
+    if (file.size > 10 * 1024 * 1024) {
+      return { message: "Image must be less than 10MB", success: false };
+    }
+
     // Upload to Cloudinary using a stream
     const result = await new Promise<any>((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(

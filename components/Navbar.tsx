@@ -45,7 +45,16 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        <div className="hidden md:block pointer-events-auto">
+        {/* <div className="hidden md:block pointer-events-auto">
+          <Link
+            href="/contact"
+            className="px-6 py-2 bg-[#1a1a1a] text-white text-xs font-bold tracking-widest hover:bg-black transition-colors uppercase"
+          >
+            Book Now
+          </Link>
+        </div> */}
+
+        <div className="block pointer-events-auto">
           <Link
             href="/contact"
             className="px-6 py-2 bg-[#1a1a1a] text-white text-xs font-bold tracking-widest hover:bg-black transition-colors uppercase"

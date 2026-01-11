@@ -8,7 +8,10 @@ export default function Home() {
       <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2669&auto=format&fit=crop"
+            src={
+              "https://images.unsplash.com/photo-1620464003286-a5b0d79f32c2?q=80&w=1336&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
+            // src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2669&auto=format&fit=crop"
             alt="Makeup Artist Hero"
             fill
             className="object-cover object-top opacity-90"
@@ -40,7 +43,7 @@ export default function Home() {
       <section className="py-24 px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <h2 className="text-4xl md:text-5xl font-serif leading-tight">
+            <h2 className="text-4xl text-gray-600 md:text-5xl font-serif leading-tight">
               Makeup is not a mask, <br />
               <span className="italic text-gray-500">it is art.</span>
             </h2>
@@ -60,9 +63,12 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="relative h-[600px] w-full bg-gray-100 overflow-hidden">
+          <div className="relative h-150 w-full bg-gray-100 overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200"
+              src={
+                "https://images.unsplash.com/photo-1611826585949-b0ccabd2c1a4?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              }
+              // src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200"
               alt="Makeup Session"
               fill
               className="object-cover hover:scale-105 transition-transform duration-700"
@@ -78,7 +84,7 @@ export default function Home() {
             <p className="text-xs font-bold tracking-[0.2em] text-gray-500 uppercase">
               What I Do
             </p>
-            <h2 className="text-4xl md:text-5xl font-serif">
+            <h2 className="text-4xl md:text-5xl font-serif text-gray-600">
               Curated Services
             </h2>
           </div>
@@ -89,19 +95,19 @@ export default function Home() {
                 title: "Bridal",
                 desc: "Timeless, radiant makeup for your special day. Creating a look that lasts through tears and laughter.",
                 image:
-                  "https://images.unsplash.com/photo-1457972729786-0411a3b2b626?q=80&w=800",
+                  "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200",
               },
               {
                 title: "Editorial",
                 desc: "Creative, high-impact looks for photography and fashion. Pushing the boundaries of beauty.",
                 image:
-                  "https://images.unsplash.com/photo-1457972729786-0411a3b2b626?q=80&w=800",
+                  "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=2687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
               },
               {
                 title: "Occasion",
                 desc: "Polished and perfect for galas, parties, or any moment you want to feel your absolute best.",
                 image:
-                  "https://images.unsplash.com/photo-1457972729786-0411a3b2b626?q=80&w=800",
+                  "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=2687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
               },
             ].map((service, index) => (
               <div key={index} className="group cursor-pointer">
@@ -114,11 +120,13 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
-                <h3 className="text-2xl font-serif mb-3">{service.title}</h3>
+                <h3 className="text-2xl font-serif mb-3 text-black">
+                  {service.title}
+                </h3>
                 <p className="text-gray-500 text-sm leading-relaxed mb-4">
                   {service.desc}
                 </p>
-                <span className="text-xs font-bold uppercase tracking-wider border-b border-gray-300 pb-1 group-hover:border-black transition-colors">
+                <span className="text-black text-xs font-bold uppercase tracking-wider border-b border-gray-300 pb-1 group-hover:border-black transition-colors">
                   View Details
                 </span>
               </div>

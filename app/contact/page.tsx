@@ -2,6 +2,7 @@
 
 import { useActionState } from "react";
 import { sendContactForm } from "./actions";
+import { useFormStatus } from "react-dom";
 
 const initialState = {
   message: "",
@@ -14,7 +15,7 @@ const initialState = {
   },
 };
 
-function SubmitButton() {
+const SubmitButton = () => {
   // We can use useFormStatus here if we want loading state,
   // but for simplicity we'll just style the button.
   // To use useFormStatus, we'd need to extract this button to a component inside the form.
@@ -30,10 +31,7 @@ function SubmitButton() {
       {pending ? "Sending..." : "Send Message"}
     </button>
   );
-}
-
-// Helper to get pending status
-import { useFormStatus } from "react-dom";
+};
 
 export default function ContactPage() {
   const [state, formAction] = useActionState(sendContactForm, initialState);
@@ -44,7 +42,9 @@ export default function ContactPage() {
         <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-4">
           Inquiries
         </p>
-        <h1 className="text-4xl md:text-6xl font-serif mb-6">Get in Touch</h1>
+        <h1 className="text-4xl md:text-6xl font-serif mb-6 text-gray-600">
+          Get in Touch
+        </h1>
         <p className="max-w-xl mx-auto text-gray-500 font-light leading-relaxed">
           For bookings, collaborations, or just to say hello, please fill out
           the form below. I typically respond within 24 hours.
@@ -56,7 +56,9 @@ export default function ContactPage() {
           {/* Contact Info */}
           <div className="w-full md:w-1/3 space-y-12">
             <div>
-              <h3 className="text-xl font-serif mb-4">Location</h3>
+              <h3 className="text-xl font-serif mb-4 text-gray-600">
+                Location
+              </h3>
               <p className="text-gray-500 font-light">
                 Based in Yangon, Myanmar.
                 <br />
@@ -64,7 +66,7 @@ export default function ContactPage() {
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-serif mb-4">Contact</h3>
+              <h3 className="text-xl font-serif mb-4 text-gray-600">Contact</h3>
               <p className="text-gray-500 font-light">
                 <a
                   href="mailto:hello@maymyo.com"
@@ -77,12 +79,15 @@ export default function ContactPage() {
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-serif mb-4">Social</h3>
+              <h3 className="text-xl font-serif mb-4 text-gray-600">Social</h3>
               <div className="flex space-x-6 text-sm text-gray-500 font-bold uppercase tracking-wider">
                 <a href="#" className="hover:text-black transition-colors">
                   Instagram
                 </a>
-                <a href="#" className="hover:text-black transition-colors">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61577229190135"
+                  className="hover:text-black transition-colors"
+                >
                   Facebook
                 </a>
               </div>
@@ -118,7 +123,7 @@ export default function ContactPage() {
                     name="name"
                     defaultValue={state.fieldValues?.name}
                     className="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-black transition-colors bg-transparent placeholder-gray-300 text-gray-800"
-                    placeholder="Jane Doe"
+                    placeholder="Enter your name"
                   />
                   {state.errors?.name && (
                     <p className="text-red-500 text-xs mt-1">

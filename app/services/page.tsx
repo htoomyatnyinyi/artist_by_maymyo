@@ -54,10 +54,10 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="pt-24 min-h-screen bg-[#fcfcfc]">
+    <div className="pt-24 min-h-screen bg-white">
       {/* Header */}
       <section className="py-16 md:py-24 px-6 md:px-12 text-center">
-        <h1 className="text-4xl md:text-6xl font-serif mb-6">
+        <h1 className="text-4xl md:text-6xl font-serif mb-6 text-gray-600">
           Services & Investment
         </h1>
         <p className="max-w-2xl mx-auto text-gray-500 font-light leading-relaxed">
@@ -122,8 +122,8 @@ export default function ServicesPage() {
 
                 <div className="pt-4">
                   <Link
-                    href="/booking"
-                    className="text-xs font-bold uppercase tracking-[0.2em] border-b-2 border-transparent hover:border-black pb-1 transition-all"
+                    href="/contact"
+                    className="text-xs font-bold uppercase tracking-[0.2em] border-b-2 border-transparent hover:border-black pb-1 transition-all text-gray-600"
                   >
                     Inquire Availability
                   </Link>
